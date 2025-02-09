@@ -61,14 +61,14 @@ export default function Home() {
                 {/* Main Image */}
                 <div className="relative aspect-square w-[280px] overflow-hidden rounded-full border border-primary/10 bg-background/50 p-1 backdrop-blur lg:w-[400px]">
                   <div className="relative h-full w-full">
-                    <Image
+        <Image
                       src="/images/uta_bierwagen_2.png"
                       alt="Uta Bierwagen - Ihre Immobilienexpertin in Dresden"
                       fill
                       sizes="(max-width: 768px) 280px, 400px"
                       className="rounded-full object-cover object-[center_30%] transition-transform duration-700 group-hover:scale-110"
-                      priority
-                    />
+          priority
+        />
                   </div>
                 </div>
               </div>
@@ -126,15 +126,15 @@ export default function Home() {
                   <span className="transition-colors duration-500 group-hover:text-primary-foreground">
                     Persönliches Gespräch
                   </span>
-                </a>
-                <a
+          </a>
+          <a
                   href="/referenzen"
                   className="group inline-flex items-center justify-center gap-2 text-base font-light text-muted-foreground transition-colors hover:text-primary pt-4"
                 >
                   Referenzen
                   <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-                </a>
-              </div>
+          </a>
+        </div>
             </div>
           </div>
         </section>
@@ -360,7 +360,7 @@ export default function Home() {
 
                 <div className="relative aspect-[2/3] overflow-hidden rounded-lg">
                   <div className="absolute inset-0 bg-primary/5" />
-                  <Image
+          <Image
                     src="/images/vision_1.png"
                     alt="Elegante Immobilienvermittlung"
                     fill
@@ -373,7 +373,7 @@ export default function Home() {
               <div className="relative mt-12 space-y-12 lg:mt-24">
                 <div className="relative aspect-[3/2] overflow-hidden rounded-lg">
                   <div className="absolute inset-0 bg-primary/5" />
-                  <Image
+          <Image
                     src="/images/vision_2.png"
                     alt="Premium Immobilien"
                     fill
@@ -465,7 +465,7 @@ export default function Home() {
             {/* Quote */}
             <figure className="mx-auto max-w-[80ch]">
               <blockquote className="relative">
-                <div className="absolute -left-12 -top-12 text-[12rem] font-black text-primary/10">"</div>
+                <div className="absolute -left-12 -top-12 text-[12rem] font-black text-primary/10">&quot;</div>
                 <p className="relative font-heading text-4xl font-light leading-relaxed tracking-tight sm:text-5xl md:text-6xl">
                   {["Mit", "Frau", "Bierwagen", "haben", "wir", "eine", "Partnerin", "gefunden,", "die", "nicht", "nur", "Immobilien", "vermittelt,", "sondern", "unsere", "Vision", "von", "der", "ersten", "Minute", "an", "versteht", "und", "perfekt", "umsetzt."].map((word, i) => (
                     <span
@@ -536,7 +536,7 @@ export default function Home() {
                   {/* Image */}
                   <div className="group relative aspect-[4/3] overflow-hidden rounded-lg">
                     <div className="absolute inset-0 bg-primary/5 transition-colors duration-700 group-hover:bg-primary/10" />
-                    <Image
+          <Image
                       src={reference.image}
                       alt={reference.title}
                       fill
@@ -799,7 +799,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-        </footer>
+      </footer>
       </main>
     </div>
   );
