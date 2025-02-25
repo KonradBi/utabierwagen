@@ -576,8 +576,8 @@ export default function Home() {
                   {[
                     {
                       src: "/images/Worldcargocenter.jpg",
-                      title: "World Cargo Center Leipzig",
-                      location: "Vermietung"
+                      title: "Vermietung",
+                      location: "World Cargo Center, Leipzig"
                     },
                     {
                       src: "/images/Verkauf FMZ Center Dresden.JPG",
@@ -597,12 +597,12 @@ export default function Home() {
                     {
                       src: "/images/Vermietung Biomarkt Leipzig.jpg",
                       title: "Vermietung",
-                      location: "Biomarkt Leipzig"
+                      location: "Einkaufszentrum Sachsenpark, Leipzig"
                     },
                     {
                       src: "/images/Vermietung Gebäudeensemble Könneritzstraße 25, Dresden.jpg",
                       title: "Vermietung",
-                      location: "Gebäudeensemble, Dresden"
+                      location: "Gebäudeensemble Könneritzstraße, Dresden"
                     },
                     {
                       src: "/images/Vermietung Pragerstraße 7 Dresden.jpg",
@@ -617,17 +617,17 @@ export default function Home() {
                     {
                       src: "/images/Vermietung Studenten Apartmenthaus, Univiertel Dresden Uhlandstr.39.JPG",
                       title: "Vermietung",
-                      location: "Studenten Apartmenthaus, Dresden"
+                      location: "Studenten Apartmenthaus Univiertel, Dresden"
                     },
                     {
                       src: "/images/Vermietung denn s  Biomarkt EKZ Sachsenpark Leipzig.JPG",
                       title: "Vermietung",
-                      location: "denn's Biomarkt, Leipzig"
+                      location: "Einkaufszentrum Sachsenpark, Leipzig"
                     },
                     {
                       src: "/images/Vermietung, Ernstings Family, Dresden.jpg",
                       title: "Vermietung",
-                      location: "Ernsting's Family, Dresden"
+                      location: "Fachmarktzentrum, Dresden"
                     },
                     {
                       src: "/images/Vermietung, Kornmarkthaus, Dresden.jpg",
@@ -642,7 +642,7 @@ export default function Home() {
                     {
                       src: "/images/Investment Wohnanlage Dresden Seidnitz, DobritzerWinterberg Str.,.JPG",
                       title: "Investment",
-                      location: "Wohnanlage Dresden"
+                      location: "Wohnanlage, Dresden-Seidnitz"
                     },
                     {
                       src: "/images/Investment penny Markt, Dürer Str. 119, Dresden Johannstadt.jpg",
@@ -669,13 +669,15 @@ export default function Home() {
                       <Image
                         src={image.src}
                         alt={image.title}
-                        fill
-                        className="object-cover transition-transform duration-500 hover:scale-110"
+                        width={400}
+                        height={300}
+                        className="absolute inset-0 h-full w-full object-cover"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-                      <div className="absolute bottom-0 left-0 right-0 p-4">
-                        <h3 className="font-heading text-xl font-light">{image.title}</h3>
-                        <p className="text-sm text-muted-foreground">{image.location}</p>
+                      <div className="absolute inset-0 bg-white/30">
+                        <div className="flex h-full flex-col justify-end bg-gradient-to-t from-black/50 to-transparent p-6">
+                          <h3 className="font-heading text-xl font-light">{image.title}</h3>
+                          <p className="text-sm text-muted-foreground">{image.location}</p>
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -683,8 +685,8 @@ export default function Home() {
                   {[
                     {
                       src: "/images/Worldcargocenter.jpg",
-                      title: "World Cargo Center Leipzig",
-                      location: "Vermietung"
+                      title: "Vermietung",
+                      location: "World Cargo Center, Leipzig"
                     },
                     {
                       src: "/images/Verkauf FMZ Center Dresden.JPG",
@@ -709,7 +711,7 @@ export default function Home() {
                     {
                       src: "/images/Vermietung Gebäudeensemble Könneritzstraße 25, Dresden.jpg",
                       title: "Vermietung",
-                      location: "Gebäudeensemble, Dresden"
+                      location: "Gebäudeensemble Könneritzstraße, Dresden"
                     },
                     {
                       src: "/images/Vermietung Pragerstraße 7 Dresden.jpg",
@@ -719,22 +721,22 @@ export default function Home() {
                     {
                       src: "/images/Vermietung Sachsenpark, Leipzig.jpg",
                       title: "Vermietung",
-                      location: "EinkaufszentrumSachsenpark, Leipzig"
+                      location: "Einkaufszentrum Sachsenpark, Leipzig"
                     },
                     {
                       src: "/images/Vermietung Studenten Apartmenthaus, Univiertel Dresden Uhlandstr.39.JPG",
                       title: "Vermietung",
-                      location: "Studenten Apartmenthaus, Dresden"
+                      location: "Studenten Apartmenthaus Univiertel, Dresden"
                     },
                     {
                       src: "/images/Vermietung denn s  Biomarkt EKZ Sachsenpark Leipzig.JPG",
                       title: "Vermietung",
-                      location: "denn's Biomarkt, Leipzig"
+                      location: "Einkaufszentrum Sachsenpark, Leipzig"
                     },
                     {
                       src: "/images/Vermietung, Ernstings Family, Dresden.jpg",
                       title: "Vermietung",
-                      location: "Ernsting's Family, Dresden"
+                      location: "Fachmarktzentrum, Dresden"
                     },
                     {
                       src: "/images/Vermietung, Kornmarkthaus, Dresden.jpg",
@@ -749,7 +751,7 @@ export default function Home() {
                     {
                       src: "/images/Investment Wohnanlage Dresden Seidnitz, DobritzerWinterberg Str.,.JPG",
                       title: "Investment",
-                      location: "Wohnanlage, Dresden"
+                      location: "Wohnanlage, Dresden-Seidnitz"
                     },
                     {
                       src: "/images/Investment penny Markt, Dürer Str. 119, Dresden Johannstadt.jpg",
@@ -776,13 +778,15 @@ export default function Home() {
                       <Image
                         src={image.src}
                         alt={image.title}
-                        fill
-                        className="object-cover transition-transform duration-500 hover:scale-110"
+                        width={400}
+                        height={300}
+                        className="absolute inset-0 h-full w-full object-cover"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-                      <div className="absolute bottom-0 left-0 right-0 p-4">
-                        <h3 className="font-heading text-xl font-light">{image.title}</h3>
-                        <p className="text-sm text-muted-foreground">{image.location}</p>
+                      <div className="absolute inset-0 bg-white/30">
+                        <div className="flex h-full flex-col justify-end bg-gradient-to-t from-black/50 to-transparent p-6">
+                          <h3 className="font-heading text-xl font-light">{image.title}</h3>
+                          <p className="text-sm text-muted-foreground">{image.location}</p>
+                        </div>
                       </div>
                     </div>
                   ))}
