@@ -276,7 +276,7 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: 1.4 }}
                 className="flex flex-col items-center gap-6 pt-8 lg:items-start lg:pt-12 sm:flex-row"
               >
-                <a
+                <Link
                   href="/kontakt"
                   className="group relative inline-flex items-center justify-center overflow-hidden rounded-full border-2 border-white/80 bg-black/40 px-8 py-4 text-base font-light text-white backdrop-blur-sm transition-all hover:border-white hover:bg-black/50"
                 >
@@ -284,14 +284,14 @@ export default function Home() {
                   <span className="transition-colors duration-500 group-hover:text-primary-foreground">
                     Persönliches Gespräch
                   </span>
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/referenzen"
                   className="group inline-flex items-center justify-center gap-2 text-base font-light text-white drop-shadow-lg transition-colors hover:text-white pt-4 hover:gap-3"
                 >
                   Referenzen
                   <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-                </a>
+                </Link>
               </motion.div>
             </motion.div>
           </div>
@@ -953,9 +953,9 @@ export default function Home() {
                       </div>
                       <div>
                         <h3 className="font-heading text-xl font-light tracking-tight">Telefon</h3>
-                        <a href="tel:+49 (0)351 810 6880" className="text-lg font-light text-muted-foreground transition-colors hover:text-primary">
+                        <Link href="tel:+49 (0)351 810 6880" className="text-lg font-light text-muted-foreground transition-colors hover:text-primary">
                           +49 (0)351 810 6880
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -969,9 +969,9 @@ export default function Home() {
                       </div>
                       <div>
                         <h3 className="font-heading text-xl font-light tracking-tight">E-Mail</h3>
-                        <a href="mailto:u.bierwagen@bierwagen-immobilien.de" className="text-lg font-light text-muted-foreground transition-colors hover:text-primary">
+                        <Link href="mailto:u.bierwagen@bierwagen-immobilien.de" className="text-lg font-light text-muted-foreground transition-colors hover:text-primary">
                           u.bierwagen@bierwagen-immobilien.de
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -1000,16 +1000,16 @@ export default function Home() {
                 <h4 className="font-heading text-xl font-light tracking-tight">Navigation</h4>
                 <ul className="space-y-2 text-sm font-light text-muted-foreground">
                   <li>
-                    <a href="/" className="transition-colors hover:text-primary">Startseite</a>
+                    <Link href="/" className="transition-colors hover:text-primary">Startseite</Link>
                   </li>
                   <li>
-                    <a href="#über" className="transition-colors hover:text-primary">Über</a>
+                    <Link href="#über" className="transition-colors hover:text-primary">Über</Link>
                   </li>
                   <li>
-                    <a href="#referenzen" className="transition-colors hover:text-primary">Referenzen</a>
+                    <Link href="#referenzen" className="transition-colors hover:text-primary">Referenzen</Link>
                   </li>
                   <li>
-                    <a href="#kontakt" className="transition-colors hover:text-primary">Kontakt</a>
+                    <Link href="#kontakt" className="transition-colors hover:text-primary">Kontakt</Link>
                   </li>
                 </ul>
               </div>
@@ -1019,13 +1019,13 @@ export default function Home() {
                 <h4 className="font-heading text-xl font-light tracking-tight">Rechtliches</h4>
                 <ul className="space-y-2 text-sm font-light text-muted-foreground">
                   <li>
-                    <a href="/impressum" className="transition-colors hover:text-primary">Impressum</a>
+                    <Link href="/impressum" className="transition-colors hover:text-primary">Impressum</Link>
                   </li>
                   <li>
-                    <a href="/datenschutz" className="transition-colors hover:text-primary">Datenschutz</a>
+                    <Link href="/datenschutz" className="transition-colors hover:text-primary">Datenschutz</Link>
                   </li>
                   <li>
-                    <a href="/agb" className="transition-colors hover:text-primary">AGB</a>
+                    <Link href="/agb" className="transition-colors hover:text-primary">AGB</Link>
                   </li>
                 </ul>
               </div>

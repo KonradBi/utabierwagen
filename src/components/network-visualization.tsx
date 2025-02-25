@@ -127,7 +127,7 @@ export function NetworkVisualization() {
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [canvasRef, containerRef]);
 
   useEffect(() => {
     if (dimensions.width && dimensions.height) {
@@ -199,7 +199,7 @@ export function NetworkVisualization() {
         canvasRef.current.removeEventListener('mousemove', handleMouseMove);
       }
     };
-  }, []);
+  }, [canvasRef]);
 
   useEffect(() => {
     if (!nodes.length) return;
@@ -242,11 +242,13 @@ export function NetworkVisualization() {
   }, [nodes]);
 
   useEffect(() => {
-    if (!canvasRef.current || !nodes.length) return;
-
     const canvas = canvasRef.current;
+    if (!canvas) return;
+
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+
+    const currentCanvas = canvas;
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
