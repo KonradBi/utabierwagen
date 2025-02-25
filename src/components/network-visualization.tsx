@@ -12,15 +12,6 @@ interface HexNode {
   y?: number;
 }
 
-interface Pulse {
-  progress: number;
-  fromX: number;
-  fromY: number;
-  toX: number;
-  toY: number;
-  direction: 'outward' | 'inward';
-}
-
 const sectors = [
   {
     name: "Hotels",
@@ -57,12 +48,6 @@ const colors = {
   background: "hsl(0, 0%, 100%)",
   text: "hsl(222, 47%, 11%)",
 };
-
-function hexToPixel(q: number, r: number, size: number): { x: number; y: number } {
-  const x = size * (3/2 * q);
-  const y = size * (Math.sqrt(3)/2 * q + Math.sqrt(3) * r);
-  return { x, y };
-}
 
 function drawHexagon(
   ctx: CanvasRenderingContext2D,
@@ -105,7 +90,6 @@ export function NetworkVisualization() {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [mousePos, setMousePos] = useState<{ x: number; y: number } | null>(null);
   const animationRef = useRef<number>();
-  const [pulses, setPulses] = useState<Pulse[]>([]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -199,47 +183,7 @@ export function NetworkVisualization() {
         canvasRef.current.removeEventListener('mousemove', handleMouseMove);
       }
     };
-  }, [canvasRef]);
-
-  useEffect(() => {
-    if (!nodes.length) return;
-    
-    const centerNode = nodes[0];
-    if (!centerNode.x || !centerNode.y) return;
-
-    const createPulse = () => {
-      const sectorNodes = nodes.filter(node => node.type === 'sector');
-      const randomSector = sectorNodes[Math.floor(Math.random() * sectorNodes.length)];
-      
-      if (randomSector.x && randomSector.y) {
-        setPulses(current => [...current, {
-          progress: 0,
-          fromX: centerNode.x!,
-          fromY: centerNode.y!,
-          toX: randomSector.x!,
-          toY: randomSector.y!,
-          direction: 'outward'
-        }]);
-
-        setTimeout(() => {
-          setPulses(current => [...current, {
-            progress: 0,
-            fromX: randomSector.x!,
-            fromY: randomSector.y!,
-            toX: centerNode.x!,
-            toY: centerNode.y!,
-            direction: 'inward'
-          }]);
-        }, 1000);
-      }
-    };
-
-    const interval = setInterval(() => {
-      createPulse();
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [nodes]);
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -248,39 +192,8 @@ export function NetworkVisualization() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const currentCanvas = canvas;
-
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      setPulses(current => 
-        current.filter(pulse => {
-          const speed = 0.02;
-          pulse.progress += speed;
-          
-          if (pulse.progress >= 1) return false;
-
-          const gradient = ctx.createLinearGradient(pulse.fromX, pulse.fromY, pulse.toX, pulse.toY);
-          const alpha = Math.sin(pulse.progress * Math.PI) * 0.3;
-          
-          if (pulse.direction === 'outward') {
-            gradient.addColorStop(0, `rgba(59, 130, 246, ${alpha})`);
-            gradient.addColorStop(1, 'transparent');
-          } else {
-            gradient.addColorStop(0, 'transparent');
-            gradient.addColorStop(1, `rgba(59, 130, 246, ${alpha})`);
-          }
-
-          ctx.beginPath();
-          ctx.strokeStyle = gradient;
-          ctx.lineWidth = 2;
-          ctx.moveTo(pulse.fromX, pulse.fromY);
-          ctx.lineTo(pulse.toX, pulse.toY);
-          ctx.stroke();
-
-          return true;
-        })
-      );
 
       nodes.forEach(node => {
         if (node.type === 'subsector') {

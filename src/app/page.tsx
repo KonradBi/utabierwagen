@@ -1,7 +1,6 @@
 "use client";
 
 import { SiteHeader } from "@/components/site-header";
-import { LogoWall } from "@/components/logo-wall";
 import { NetworkVisualization } from "@/components/network-visualization";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,131 +8,7 @@ import { useState } from "react";
 import { Building2, LandPlot, Star } from "lucide-react";
 import { motion } from "framer-motion";
 
-const featuredReferences = [
-  {
-    title: "Business Park – Airport Leipzig/Halle",
-    subtitle: "Distributioncenter",
-    image: "/images/businesspark.jpg",
-  },
-  {
-    title: "Garbe World Cargo Center - Flughafen Leipzig/Halle",
-    subtitle: "BITZER Kühlmaschinenbau Schkeuditz GmbH",
-    image: "/images/Garbe-World-Cargo-Center-Leipzig.jpg",
-  },
-  {
-    title: "EKZ Scheunenhof Pirna",
-    subtitle: "Projekt der Edeka AG; Vermietung Einzelhandel, Praxen, Betreutes Wohnen",
-    image: "/images/EKZ-Scheunenhof.jpg",
-  },
-  {
-    title: "Ferdinandhof Büro- und Geschäftshaus",
-    subtitle: "Ferdinandplatz 1-2, Dresden-City, Niederlassung der HUK Coburg Versicherungsgruppe",
-    image: "/images/referenz_huk.jpg",
-  },
-  {
-    title: "Geschäftshaus Prager Straße",
-    subtitle: "Prager Straße 11, Dresden, Schuhgeschäft Salamander",
-    image: "/images/referenz_prager_strasse_.jpg",
-  },
-  {
-    title: "Kolping City Center",
-    subtitle: "Haydnstr. 39, Dresden, Ausbildungs- und Bürokomplex Deutsches Rotes Kreuz Bildungswerk Sachsen e.V.",
-    image: "/images/referenz_drk.jpg",
-  },
-];
-
-const images = [
-  {
-    src: "/images/Worldcargocenter.jpg",
-    title: "World Cargo Center Leipzig",
-    location: "Erfolgreich vermittelt"
-  },
-  {
-    src: "/images/Verkauf FMZ Center Dresden.JPG",
-    title: "Verkauf",
-    location: "FMZ Center Dresden"
-  },
-  {
-    src: "/images/Verkauf, Wasapark, Dresden.jpg",
-    title: "Verkauf",
-    location: "Wasapark, Dresden"
-  },
-  {
-    src: "/images/Vermietung Biomarkt Dresden.jpg",
-    title: "Vermietung",
-    location: "Biomarkt Dresden"
-  },
-  {
-    src: "/images/Vermietung Biomarkt Leipzig.jpg",
-    title: "Vermietung",
-    location: "Biomarkt Leipzig"
-  },
-  {
-    src: "/images/Vermietung Gebäudeensemble Könneritzstraße 25, Dresden.jpg",
-    title: "Vermietung",
-    location: "Gebäudeensemble Könneritzstraße 25, Dresden"
-  },
-  {
-    src: "/images/Vermietung Pragerstraße 7 Dresden.jpg",
-    title: "Vermietung",
-    location: "Pragerstraße 7, Dresden"
-  },
-  {
-    src: "/images/Vermietung Sachsenpark, Leipzig.jpg",
-    title: "Vermietung",
-    location: "Sachsenpark, Leipzig"
-  },
-  {
-    src: "/images/Vermietung Studenten Apartmenthaus, Univiertel Dresden Uhlandstr.39.JPG",
-    title: "Vermietung",
-    location: "Studenten Apartmenthaus, Univiertel Dresden Uhlandstr. 39"
-  },
-  {
-    src: "/images/Vermietung Vorwerk Podemus Dresden.jpg",
-    title: "Vermietung",
-    location: "Vorwerk Podemus Dresden"
-  },
-  {
-    src: "/images/Vermietung denn s  Biomarkt EKZ Sachsenpark Leipzig.JPG",
-    title: "Vermietung",
-    location: "denn's Biomarkt EKZ Sachsenpark Leipzig"
-  },
-  {
-    src: "/images/Vermietung, Ernstings Family, Dresden.jpg",
-    title: "Vermietung",
-    location: "Ernsting's Family, Dresden"
-  },
-  {
-    src: "/images/Vermietung, Kornmarkthaus, Dresden.jpg",
-    title: "Vermietung",
-    location: "Kornmarkthaus, Dresden"
-  },
-  {
-    src: "/images/Vermietung; Meininger Hotel, Dresden.jpg",
-    title: "Vermietung",
-    location: "Meininger Hotel, Dresden"
-  },
-  {
-    src: "/images/Investment Wohnanlage Dresden Seidnitz, DobritzerWinterberg Str.,.JPG",
-    title: "Investment",
-    location: "Wohnanlage Dresden Seidnitz, Dobritzer-Winterberg Str."
-  },
-  {
-    src: "/images/Investment penny Markt, Dürer Str. 119, Dresden Johannstadt.jpg",
-    title: "Investment",
-    location: "Penny Markt, Dürer Str. 119, Dresden Johannstadt"
-  },
-  {
-    src: "/images/Komplexvermietung EKZ Scheunenhof Pirna.jpg",
-    title: "Komplexvermietung",
-    location: "EKZ Scheunenhof Pirna"
-  },
-];
-
 export default function Home() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoScrolling, setIsAutoScrolling] = useState(true);
-
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
@@ -565,9 +440,9 @@ export default function Home() {
                     <span className="absolute -left-4 top-0 text-6xl font-extralight text-primary/20 animate-fade-in opacity-0" style={{ animationDelay: '200ms' }}>03</span>
                     <div className="relative ml-12">
                       <span className="text-sm font-light tracking-widest text-primary animate-fade-in opacity-0" style={{ animationDelay: '400ms' }}>UNSERE VISION</span>
-                      <h2 className="font-heading text-5xl font-extralight tracking-tight sm:text-6xl">
-                        <span className="animate-fade-in opacity-0 block" style={{ animationDelay: '600ms' }}>Die Kunst der</span>
-                        <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent animate-fade-in opacity-0 block" style={{ animationDelay: '800ms' }}>
+                      <h2 className="font-heading text-5xl font-extralight tracking-tight animate-fade-in opacity-0" style={{ animationDelay: '600ms' }}>
+                        <span className="animate-fade-in opacity-0 block" style={{ animationDelay: '800ms' }}>Die Kunst der</span>
+                        <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent animate-fade-in opacity-0 block" style={{ animationDelay: '1000ms' }}>
                           Immobilien&shy;vermittlung
                         </span>
                       </h2>
