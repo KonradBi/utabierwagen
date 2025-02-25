@@ -111,7 +111,7 @@ export function NetworkVisualization() {
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [canvasRef, containerRef]);
+  }, []);
 
   useEffect(() => {
     if (dimensions.width && dimensions.height) {
@@ -164,9 +164,10 @@ export function NetworkVisualization() {
   }, [dimensions]);
 
   useEffect(() => {
+    const canvas = canvasRef.current;
     const handleMouseMove = (event: MouseEvent) => {
-      if (canvasRef.current) {
-        const rect = canvasRef.current.getBoundingClientRect();
+      if (canvas) {
+        const rect = canvas.getBoundingClientRect();
         setMousePos({
           x: event.clientX - rect.left,
           y: event.clientY - rect.top
@@ -174,13 +175,13 @@ export function NetworkVisualization() {
       }
     };
 
-    if (canvasRef.current) {
-      canvasRef.current.addEventListener('mousemove', handleMouseMove);
+    if (canvas) {
+      canvas.addEventListener('mousemove', handleMouseMove);
     }
 
     return () => {
-      if (canvasRef.current) {
-        canvasRef.current.removeEventListener('mousemove', handleMouseMove);
+      if (canvas) {
+        canvas.removeEventListener('mousemove', handleMouseMove);
       }
     };
   }, []);
