@@ -4,7 +4,6 @@ import { SiteHeader } from "@/components/site-header";
 import { NetworkVisualization } from "@/components/network-visualization";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import { Building2, LandPlot, Star } from "lucide-react";
 import { motion } from "framer-motion";
 
