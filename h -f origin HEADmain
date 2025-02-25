@@ -1,0 +1,11 @@
+[33mcommit 9bcc9bce5d41695688204c40e7acf1042fd03683[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: KonradBi <konradbierwagen@gmail.com>
+Date:   Sun Feb 9 17:59:57 2025 +0800
+
+    Initial commit: Basic website setup with Next.js
+
+[33mcommit 9527df5152315bacceba9992ec40caefe14fe8f9[m
+Author: KonradBi <konradbierwagen@gmail.com>
+Date:   Fri Feb 7 17:18:38 2025 +0800
+
+    Initial commit from Create Next App

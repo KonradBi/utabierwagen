@@ -7,6 +7,7 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  prefix: "",
   theme: {
     container: {
       center: true,
@@ -95,6 +96,46 @@ const config: Config = {
         "border-rotate": {
           "0%": { "--border-angle": "0deg" },
           "100%": { "--border-angle": "360deg" },
+        },
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        "scroll-left": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        "scroll-right": {
+          "0%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(0)" },
+        },
+        "float": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        "pulse-glow": {
+          "0%, 100%": { 
+            opacity: "1",
+            transform: "scale(1)",
+            filter: "brightness(1)"
+          },
+          "50%": { 
+            opacity: "0.8",
+            transform: "scale(1.05)",
+            filter: "brightness(1.2)"
+          },
+        },
+        "rotate-3d": {
+          "0%": { 
+            transform: "perspective(1000px) rotateY(0deg)" 
+          },
+          "100%": { 
+            transform: "perspective(1000px) rotateY(360deg)" 
+          },
         }
       },
       animation: {
@@ -109,6 +150,13 @@ const config: Config = {
         "scale-up": "scale-up 0.3s ease-out forwards",
         "slide-right": "slide-right 8s linear infinite",
         "border-rotate": "border-rotate 8s linear infinite",
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+        "scroll-left": "scroll-left 40s linear infinite",
+        "scroll-right": "scroll-right 40s linear infinite",
+        "float": "float 6s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 4s ease-in-out infinite",
+        "rotate-3d": "rotate-3d 15s linear infinite",
       },
     },
   },

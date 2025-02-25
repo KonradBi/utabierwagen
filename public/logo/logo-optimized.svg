@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="88" viewBox="0 0 400 88" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" fill-rule="evenodd">
+    <!-- Text "bierwagen" -->
+    <text font-family="Futura-Light, Futura" font-size="48" font-weight="300" fill="#000000" x="0" y="40">
+      bierwagen
+    </text>
+    <!-- Blue square -->
+    <rect fill="#0066B3" x="0" y="48" width="40" height="40"/>
+    <!-- Text "mmobilien" -->
+    <text font-family="Futura-Light, Futura" font-size="48" font-weight="300" fill="#000000" x="40" y="88">
+      mmobilien
+    </text>
+  </g>
+</svg>
