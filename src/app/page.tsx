@@ -577,17 +577,17 @@ export default function Home() {
                     {
                       src: "/images/Worldcargocenter.jpg",
                       title: "World Cargo Center Leipzig",
-                      location: "Erfolgreich vermittelt"
+                      location: "Vermietung"
                     },
                     {
                       src: "/images/Verkauf FMZ Center Dresden.JPG",
-                      title: "Verkauf",
-                      location: "FMZ Center Dresden"
+                      title: "Grundstücksvermittlung",
+                      location: "EDEKA Fachmarktzentrum, Dresden"
                     },
                     {
                       src: "/images/Verkauf, Wasapark, Dresden.jpg",
                       title: "Verkauf",
-                      location: "Wasapark, Dresden"
+                      location: "Wasapark, Radebeul"
                     },
                     {
                       src: "/images/Vermietung Biomarkt Dresden.jpg",
@@ -602,32 +602,27 @@ export default function Home() {
                     {
                       src: "/images/Vermietung Gebäudeensemble Könneritzstraße 25, Dresden.jpg",
                       title: "Vermietung",
-                      location: "Gebäudeensemble Könneritzstraße 25, Dresden"
+                      location: "Gebäudeensemble, Dresden"
                     },
                     {
                       src: "/images/Vermietung Pragerstraße 7 Dresden.jpg",
                       title: "Vermietung",
-                      location: "Pragerstraße 7, Dresden"
+                      location: "Dresden"
                     },
                     {
                       src: "/images/Vermietung Sachsenpark, Leipzig.jpg",
                       title: "Vermietung",
-                      location: "Sachsenpark, Leipzig"
+                      location: "Einkaufszentrum Sachsenpark, Leipzig"
                     },
                     {
                       src: "/images/Vermietung Studenten Apartmenthaus, Univiertel Dresden Uhlandstr.39.JPG",
                       title: "Vermietung",
-                      location: "Studenten Apartmenthaus, Univiertel Dresden Uhlandstr. 39"
-                    },
-                    {
-                      src: "/images/Vermietung Vorwerk Podemus Dresden.jpg",
-                      title: "Vermietung",
-                      location: "Vorwerk Podemus Dresden"
+                      location: "Studenten Apartmenthaus, Dresden"
                     },
                     {
                       src: "/images/Vermietung denn s  Biomarkt EKZ Sachsenpark Leipzig.JPG",
                       title: "Vermietung",
-                      location: "denn's Biomarkt EKZ Sachsenpark Leipzig"
+                      location: "denn's Biomarkt, Leipzig"
                     },
                     {
                       src: "/images/Vermietung, Ernstings Family, Dresden.jpg",
@@ -637,7 +632,7 @@ export default function Home() {
                     {
                       src: "/images/Vermietung, Kornmarkthaus, Dresden.jpg",
                       title: "Vermietung",
-                      location: "Kornmarkthaus, Dresden"
+                      location: "Kornmarkthaus, Bautzen"
                     },
                     {
                       src: "/images/Vermietung; Meininger Hotel, Dresden.jpg",
@@ -647,18 +642,28 @@ export default function Home() {
                     {
                       src: "/images/Investment Wohnanlage Dresden Seidnitz, DobritzerWinterberg Str.,.JPG",
                       title: "Investment",
-                      location: "Wohnanlage Dresden Seidnitz, Dobritzer-Winterberg Str."
+                      location: "Wohnanlage Dresden"
                     },
                     {
                       src: "/images/Investment penny Markt, Dürer Str. 119, Dresden Johannstadt.jpg",
                       title: "Investment",
-                      location: "Penny Markt, Dürer Str. 119, Dresden Johannstadt"
+                      location: "Penny Markt, Dresden"
                     },
                     {
                       src: "/images/Komplexvermietung EKZ Scheunenhof Pirna.jpg",
-                      title: "Komplexvermietung",
+                      title: "Exklusivvermietung",
                       location: "EKZ Scheunenhof Pirna"
-                    }
+                    },
+                    {
+                      src: "/images/Vermietung, BB Bank, Dresden.jpg",
+                      title: "Vermietung",
+                      location: "BB Bank, Dresden"
+                    },
+                    {
+                      src: "/images/Vermietung Annika Schuhe, Dresden.jpg",
+                      title: "Vermietung",
+                      location: "Annika Schuhe, Dresden"
+                    },
                   ].map((image, index) => (
                     <div key={`first-${index}`} className="relative aspect-[4/3] w-96 shrink-0 overflow-hidden rounded-xl border border-primary/10">
                       <Image
@@ -679,57 +684,52 @@ export default function Home() {
                     {
                       src: "/images/Worldcargocenter.jpg",
                       title: "World Cargo Center Leipzig",
-                      location: "Erfolgreich vermittelt"
+                      location: "Vermietung"
                     },
                     {
                       src: "/images/Verkauf FMZ Center Dresden.JPG",
-                      title: "Verkauf",
-                      location: "FMZ Center Dresden"
+                      title: "Grundstücksvermittlung",
+                      location: "EDEKA Fachmarktzentrum, Dresden"
                     },
                     {
                       src: "/images/Verkauf, Wasapark, Dresden.jpg",
                       title: "Verkauf",
-                      location: "Wasapark, Dresden"
+                      location: "Wasapark, Radebeul"
                     },
                     {
                       src: "/images/Vermietung Biomarkt Dresden.jpg",
                       title: "Vermietung",
-                      location: "Biomarkt Dresden"
+                      location: "Biomarkt, Dresden"
                     },
                     {
                       src: "/images/Vermietung Biomarkt Leipzig.jpg",
                       title: "Vermietung",
-                      location: "Biomarkt Leipzig"
+                      location: "Einkaufszentrum Sachsenpark, Leipzig"
                     },
                     {
                       src: "/images/Vermietung Gebäudeensemble Könneritzstraße 25, Dresden.jpg",
                       title: "Vermietung",
-                      location: "Gebäudeensemble Könneritzstraße 25, Dresden"
+                      location: "Gebäudeensemble, Dresden"
                     },
                     {
                       src: "/images/Vermietung Pragerstraße 7 Dresden.jpg",
                       title: "Vermietung",
-                      location: "Pragerstraße 7, Dresden"
+                      location: "Dresden"
                     },
                     {
                       src: "/images/Vermietung Sachsenpark, Leipzig.jpg",
                       title: "Vermietung",
-                      location: "Sachsenpark, Leipzig"
+                      location: "EinkaufszentrumSachsenpark, Leipzig"
                     },
                     {
                       src: "/images/Vermietung Studenten Apartmenthaus, Univiertel Dresden Uhlandstr.39.JPG",
                       title: "Vermietung",
-                      location: "Studenten Apartmenthaus, Univiertel Dresden Uhlandstr. 39"
-                    },
-                    {
-                      src: "/images/Vermietung Vorwerk Podemus Dresden.jpg",
-                      title: "Vermietung",
-                      location: "Vorwerk Podemus Dresden"
+                      location: "Studenten Apartmenthaus, Dresden"
                     },
                     {
                       src: "/images/Vermietung denn s  Biomarkt EKZ Sachsenpark Leipzig.JPG",
                       title: "Vermietung",
-                      location: "denn's Biomarkt EKZ Sachsenpark Leipzig"
+                      location: "denn's Biomarkt, Leipzig"
                     },
                     {
                       src: "/images/Vermietung, Ernstings Family, Dresden.jpg",
@@ -739,7 +739,7 @@ export default function Home() {
                     {
                       src: "/images/Vermietung, Kornmarkthaus, Dresden.jpg",
                       title: "Vermietung",
-                      location: "Kornmarkthaus, Dresden"
+                      location: "Kornmarkthaus, Bautzen"
                     },
                     {
                       src: "/images/Vermietung; Meininger Hotel, Dresden.jpg",
@@ -749,18 +749,28 @@ export default function Home() {
                     {
                       src: "/images/Investment Wohnanlage Dresden Seidnitz, DobritzerWinterberg Str.,.JPG",
                       title: "Investment",
-                      location: "Wohnanlage Dresden Seidnitz, Dobritzer-Winterberg Str."
+                      location: "Wohnanlage, Dresden"
                     },
                     {
                       src: "/images/Investment penny Markt, Dürer Str. 119, Dresden Johannstadt.jpg",
                       title: "Investment",
-                      location: "Penny Markt, Dürer Str. 119, Dresden Johannstadt"
+                      location: "Penny Markt, Dresden"
                     },
                     {
                       src: "/images/Komplexvermietung EKZ Scheunenhof Pirna.jpg",
                       title: "Komplexvermietung",
-                      location: "EKZ Scheunenhof Pirna"
-                    }
+                      location: "EKZ Scheunenhof, Pirna"
+                    },
+                    {
+                      src: "/images/Vermietung, BB Bank, Dresden.jpg",
+                      title: "Vermietung",
+                      location: "BB Bank, Dresden"
+                    },
+                    {
+                      src: "/images/Vermietung Annika Schuhe, Dresden.jpg",
+                      title: "Vermietung",
+                      location: "Annika Schuhe, Dresden"
+                    },
                   ].map((image, index) => (
                     <div key={`second-${index}`} className="relative aspect-[4/3] w-96 shrink-0 overflow-hidden rounded-xl border border-primary/10">
                       <Image
