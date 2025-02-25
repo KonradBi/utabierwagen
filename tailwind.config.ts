@@ -74,12 +74,12 @@ const config: Config = {
           "100%": { transform: "rotate(360deg)" },
         },
         "pulse-slow": {
-          "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.5" },
-        },
-        "pulse-slower": {
           "0%, 100%": { opacity: "0.8" },
           "50%": { opacity: "0.3" },
+        },
+        "pulse-slower": {
+          "0%, 100%": { opacity: "0.6" },
+          "50%": { opacity: "0.2" },
         },
         "pulse-slowest": {
           "0%, 100%": { opacity: "0.6" },
@@ -91,7 +91,7 @@ const config: Config = {
         },
         "slide-right": {
           "0%": { transform: "translateX(-100%)" },
-          "100%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(0)" },
         },
         "border-rotate": {
           "0%": { "--border-angle": "0deg" },
@@ -113,7 +113,7 @@ const config: Config = {
           "0%": { transform: "translateX(-50%)" },
           "100%": { transform: "translateX(0)" },
         },
-        "float": {
+        "float-animation": {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-10px)" },
         },
@@ -154,9 +154,9 @@ const config: Config = {
         "accordion-up": "accordion-up 0.2s ease-out",
         "scroll-left": "scroll-left 40s linear infinite",
         "scroll-right": "scroll-right 40s linear infinite",
-        "float": "float 6s ease-in-out infinite",
+        "float-animation": "float-animation 6s ease-in-out infinite",
         "pulse-glow": "pulse-glow 4s ease-in-out infinite",
-        "rotate-3d": "rotate-3d 15s linear infinite",
+        "rotate-3d": "rotate-3d 15s linear infinite"
       },
     },
   },

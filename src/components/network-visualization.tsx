@@ -83,13 +83,13 @@ function drawHexagon(
 }
 
 export function NetworkVisualization() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const [activeNode, setActiveNode] = useState<string | null>(null);
   const [nodes, setNodes] = useState<HexNode[]>([]);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [mousePos, setMousePos] = useState<{ x: number; y: number } | null>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | null>(null);
 
   useEffect(() => {
     const handleResize = () => {
