@@ -3,18 +3,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-interface NetworkNode {
-  id: string;
-  type: "center" | "sector" | "subsector";
-  name: string;
-  sector?: string;
-  description?: string;
-  x?: number;
-  y?: number;
-  angle?: number;
-  distance?: number;
-}
-
 const sectors = [
   {
     name: "Hotels",
@@ -50,7 +38,6 @@ const sectors = [
 
 export function NetworkVisualization() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [isClient, setIsClient] = useState(false);
   const [hoveredSubsector, setHoveredSubsector] = useState<string | null>(null);
 
@@ -65,8 +52,8 @@ export function NetworkVisualization() {
     
     const handleResize = () => {
       if (containerRef.current) {
-        const { width, height } = containerRef.current.getBoundingClientRect();
-        setDimensions({ width, height });
+        // Wir brauchen die Dimensionen nicht mehr zu speichern, da wir sie nicht verwenden
+        containerRef.current.getBoundingClientRect();
       }
     };
 

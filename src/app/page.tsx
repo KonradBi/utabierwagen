@@ -5,7 +5,7 @@ import { NetworkVisualization } from "@/components/network-visualization";
 import Image from "next/image";
 import Link from "next/link";
 import { Building2, LandPlot, Star } from "lucide-react";
-import { motion, useInView, useAnimation } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 
 // Typen für die CountUpNumber-Komponente
