@@ -43,14 +43,11 @@ export function SiteHeader() {
           </nav>
           <div className="hidden sm:block">
             <Link
-              href="tel:+4935181068800"
-              className="group flex items-center space-x-4 text-lg font-light text-muted-foreground transition-colors hover:text-primary"
+              className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
+              href="tel:+491723536789"
             >
-              <div className="relative">
-                <div className="absolute -inset-2 -z-10 rounded-lg bg-primary/5 opacity-0 transition-opacity group-hover:opacity-100" />
-                <Phone className="h-4 w-4" />
-              </div>
-              <span>+49 (0)351 810 6880</span>
+              <Phone className="h-4 w-4" />
+              <span>+49 (0)172 35 36 789</span>
             </Link>
           </div>
         </div>

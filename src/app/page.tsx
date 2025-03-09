@@ -5,7 +5,60 @@ import { NetworkVisualization } from "@/components/network-visualization";
 import Image from "next/image";
 import Link from "next/link";
 import { Building2, LandPlot, Star } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useInView, useAnimation } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+
+// Typen für die CountUpNumber-Komponente
+interface CountUpNumberProps {
+  endValue: string;
+  suffix?: string;
+  duration?: number;
+}
+
+// Komponente für animierte Zahlen
+const CountUpNumber = ({ endValue, suffix = "", duration = 1.5 }: CountUpNumberProps) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
+  const [count, setCount] = useState(0);
+  
+  useEffect(() => {
+    if (isInView) {
+      let startValue = 0;
+      const endValueNumber = parseInt(endValue.replace(/\D/g, ''));
+      const increment = Math.ceil(endValueNumber / (duration * 60));
+      const timer = setInterval(() => {
+        startValue += increment;
+        if (startValue > endValueNumber) {
+          setCount(endValueNumber);
+          clearInterval(timer);
+        } else {
+          setCount(startValue);
+        }
+      }, 16);
+      
+      return () => clearInterval(timer);
+    }
+  }, [isInView, endValue, duration]);
+  
+  return (
+    <span ref={ref} className="relative inline-block font-heading text-5xl font-light tracking-tight">
+      <span className="absolute inset-0 bg-gradient-to-r from-primary/40 via-primary/20 to-transparent blur-2xl" />
+      <span className="relative bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+        {isInView ? (
+          <motion.span
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            {count}{suffix}
+          </motion.span>
+        ) : (
+          <span>0{suffix}</span>
+        )}
+      </span>
+    </span>
+  );
+};
 
 export default function Home() {
   return (
@@ -55,10 +108,10 @@ export default function Home() {
                 
                 {/* Main Image */}
                 <motion.div 
-                  initial={{ rotate: -10, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.6 }}
-                  className="relative aspect-square w-[280px] overflow-hidden rounded-full border border-primary/10 bg-background/50 p-1 backdrop-blur lg:w-[400px]"
+                  className="relative aspect-square w-[280px] overflow-hidden rounded-full bg-background/30 p-1 backdrop-blur lg:w-[400px]"
                 >
                   <div className="relative h-full w-full">
                     <Image
@@ -66,7 +119,7 @@ export default function Home() {
                       alt="Uta Bierwagen - Ihre Immobilienexpertin in Dresden"
                       fill
                       sizes="(max-width: 768px) 280px, 400px"
-                      className="rounded-full object-cover object-[center_30%] transition-transform duration-700 group-hover:scale-110"
+                      className="rounded-full object-cover object-[center_40%] transition-transform duration-700 group-hover:scale-105"
                       priority
                     />
                   </div>
@@ -122,12 +175,9 @@ export default function Home() {
                   transition={{ duration: 0.8, delay: 1 }}
                   className="font-heading text-6xl font-extralight tracking-tight text-white drop-shadow-lg sm:text-7xl md:text-8xl lg:text-9xl"
                 >
-                  <span className="relative inline-block">
-                    <span className="absolute inset-0 bg-gradient-to-r from-white/40 via-white/20 to-transparent blur-2xl" />
-                    <span className="relative">Uta</span>
-                  </span>
+                  <span className="relative">Uta</span>
                   <br />
-                  <span className="relative inline-block bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
                     Bierwagen
                   </span>
                 </motion.h1>
@@ -191,15 +241,15 @@ export default function Home() {
             {/* Editorial Header */}
             <div className="mb-24 grid grid-cols-1 gap-4 lg:grid-cols-[1fr_2px_1fr] lg:gap-16">
               <div className="relative">
-                <span className="absolute -left-4 top-0 text-6xl font-extralight text-primary/20">01</span>
-                <h2 className="relative ml-12 font-heading text-6xl font-light tracking-tight sm:text-7xl">
+                <span className="absolute -left-4 top-0 text-6xl font-extralight text-primary/20 animate-fade-in opacity-0" style={{ animationDelay: '100ms' }}>01</span>
+                <h2 className="relative ml-12 font-heading text-6xl font-light tracking-tight sm:text-7xl animate-fade-in opacity-0" style={{ animationDelay: '300ms' }}>
                   Service
                 </h2>
               </div>
-              <div className="hidden h-full w-px bg-gradient-to-b from-transparent via-white/20 to-transparent lg:block" />
+              <div className="hidden h-full w-px bg-gradient-to-b from-transparent via-white/20 to-transparent lg:block animate-fade-in opacity-0" style={{ animationDelay: '500ms' }} />
               <div className="relative ml-8 lg:ml-0">
-                <p className="max-w-2xl text-lg font-light leading-relaxed text-muted-foreground">
-                  Mit meiner langjährigen Expertise im Immobilienbereich biete ich Ihnen eine umfassende Beratung und Betreuung. Ich verstehe die individuellen Bedürfnisse meiner Kunden und finde die perfekte Lösung für Ihre Anforderungen.
+                <p className="max-w-2xl text-lg font-light leading-relaxed text-muted-foreground animate-fade-in opacity-0" style={{ animationDelay: '700ms' }}>
+                  Mit meiner Expertise im Immobilienbereich erhalten Sie eine umfassende Beratung und Betreuung. Ich verstehe die individuellen Bedürfnisse meiner Kunden und finde die perfekte Lösung für Ihre Anforderungen.
                 </p>
               </div>
             </div>
@@ -223,7 +273,7 @@ export default function Home() {
                   <div className="space-y-4">
                     <h3 className="font-heading text-4xl font-light tracking-tight animate-fade-in opacity-0" style={{ animationDelay: '200ms' }}>Residential</h3>
                     <p className="text-lg font-light leading-relaxed text-muted-foreground animate-fade-in opacity-0" style={{ animationDelay: '400ms' }}>
-                      Als erfahrene Immobilienexpertin biete ich Ihnen eine vertrauliche Vermittlung hochwertiger Entwicklungsgrundstücke und Projektentwicklungen mit Fokus auf nachhaltige Wertschöpfung.
+                      Ich biete Ihnen eine vertrauliche Vermittlung hochwertiger Entwicklungsgrundstücke und Projektentwicklungen mit Fokus auf nachhaltige Wertschöpfung.
                     </p>
                   </div>
                   <ul className="space-y-4 text-base font-light text-muted-foreground">
@@ -316,7 +366,7 @@ export default function Home() {
                   <div className="space-y-4">
                     <h3 className="font-heading text-4xl font-light tracking-tight animate-fade-in opacity-0" style={{ animationDelay: '200ms' }}>Commercial</h3>
                     <p className="text-lg font-light leading-relaxed text-muted-foreground animate-fade-in opacity-0" style={{ animationDelay: '400ms' }}>
-                      Als Ihre Spezialistin für Immobilien biete ich Ihnen eine maßgeschneiderte Beratung. Mit meiner langjährigen Erfahrung und meinem weitreichenden Netzwerk finde ich die optimale Immobilie für Ihre spezifischen Anforderungen.
+                      Als Ihre Spezialistin für Immobilien biete ich Ihnen eine maßgeschneiderte Beratung. Mit meiner Erfahrung und meinem weitreichenden Netzwerk finde ich die optimale Immobilie für Ihre spezifischen Anforderungen.
                     </p>
                   </div>
                   <ul className="space-y-4 text-base font-light text-muted-foreground">
@@ -364,14 +414,14 @@ export default function Home() {
             {/* Editorial Header */}
             <div className="mb-24 grid grid-cols-1 gap-4 lg:grid-cols-[1fr_2px_1fr] lg:gap-16">
               <div className="relative">
-                <span className="absolute -left-4 top-0 text-6xl font-extralight text-primary/20">02</span>
-                <h2 className="relative ml-12 font-heading text-6xl font-light tracking-tight sm:text-7xl">
-                  Erfahrung
+                <span className="absolute -left-4 top-0 text-6xl font-extralight text-primary/20 animate-fade-in opacity-0" style={{ animationDelay: '100ms' }}>02</span>
+                <h2 className="relative ml-12 font-heading text-6xl font-light tracking-tight sm:text-7xl animate-fade-in opacity-0" style={{ animationDelay: '300ms' }}>
+                  Expertise
                 </h2>
               </div>
-              <div className="hidden h-full w-px bg-gradient-to-b from-transparent via-white/20 to-transparent lg:block" />
+              <div className="hidden h-full w-px bg-gradient-to-b from-transparent via-white/20 to-transparent lg:block animate-fade-in opacity-0" style={{ animationDelay: '500ms' }} />
               <div className="relative ml-8 lg:ml-0">
-                <p className="max-w-2xl text-lg font-light leading-relaxed text-muted-foreground">
+                <p className="max-w-2xl text-lg font-light leading-relaxed text-muted-foreground animate-fade-in opacity-0" style={{ animationDelay: '700ms' }}>
                   Jahrzehntelange Expertise und ein tiefgreifendes Verständnis des Immobilienmarktes 
                   machen mich zu Ihrem verlässlichen Partner im Raum Dresden und deutschlandweit.
                 </p>
@@ -399,12 +449,11 @@ export default function Home() {
               ].map((stat, index) => (
                 <div key={index} className="group space-y-4 text-center">
                   <div className="relative">
-                    <span className="relative inline-block font-heading text-5xl font-light tracking-tight animate-fade-in opacity-0" style={{ animationDelay: `${index * 200 + 200}ms` }}>
-                      <span className="absolute inset-0 bg-gradient-to-r from-primary/40 via-primary/20 to-transparent blur-2xl" />
-                      <span className="relative bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-                        {stat.number}
-                      </span>
-                    </span>
+                    <CountUpNumber 
+                      endValue={stat.number} 
+                      suffix={stat.number.includes('%') ? '%' : '+'} 
+                      duration={1.5 + index * 0.5} 
+                    />
                     <div className="mt-2 h-px w-12 bg-gradient-to-r from-transparent via-primary/30 to-transparent transition-all duration-500 group-hover:w-24 mx-auto animate-fade-in opacity-0" style={{ animationDelay: `${index * 200 + 400}ms` }} />
                   </div>
                   <div>
@@ -438,7 +487,7 @@ export default function Home() {
                   <div className="relative">
                     <span className="absolute -left-4 top-0 text-6xl font-extralight text-primary/20 animate-fade-in opacity-0" style={{ animationDelay: '200ms' }}>03</span>
                     <div className="relative ml-12">
-                      <span className="text-sm font-light tracking-widest text-primary animate-fade-in opacity-0" style={{ animationDelay: '400ms' }}>UNSERE VISION</span>
+                      <span className="text-sm font-light tracking-widest text-primary animate-fade-in opacity-0" style={{ animationDelay: '400ms' }}>MEINE VISION</span>
                       <h2 className="font-heading text-5xl font-extralight tracking-tight animate-fade-in opacity-0" style={{ animationDelay: '600ms' }}>
                         <span className="animate-fade-in opacity-0 block" style={{ animationDelay: '800ms' }}>Die Kunst der</span>
                         <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent animate-fade-in opacity-0 block" style={{ animationDelay: '1000ms' }}>
@@ -473,20 +522,20 @@ export default function Home() {
                 </div>
 
                 <div className="space-y-8">
-                  <p className="text-balance text-lg font-light leading-relaxed text-muted-foreground">
+                  <p className="text-balance text-lg font-light leading-relaxed text-muted-foreground animate-fade-in opacity-0" style={{ animationDelay: '1200ms' }}>
                     Immobilienvermittlung ist für mich mehr als nur ein Geschäft – es ist eine Kunstform. 
                     Jedes Objekt erzählt seine eigene Geschichte, hat seinen eigenen Charakter und wartet 
                     darauf, von den richtigen Menschen entdeckt zu werden.
                   </p>
 
                   <div className="grid gap-8 text-base font-light leading-relaxed text-muted-foreground md:grid-cols-2">
-                    <div className="space-y-4">
+                    <div className="space-y-4 animate-fade-in opacity-0" style={{ animationDelay: '1400ms' }}>
                       <h3 className="font-heading text-xl font-light tracking-tight text-foreground">Philosophie</h3>
                       <p>
-                        Als Spezialistin für Immobilien biete ich Ihnen eine diskrete und professionelle Beratung. Mit meinem fundierten Marktwissen und langjähriger Erfahrung begleite ich Sie bei Ihrer Investitionsentscheidung.
+                        Als Spezialistin für Immobilien biete ich Ihnen eine diskrete und professionelle Beratung. Mit meinem fundierten Marktwissen begleite ich Sie bei Ihrer Investitionsentscheidung.
                       </p>
                     </div>
-                    <div className="space-y-4">
+                    <div className="space-y-4 animate-fade-in opacity-0" style={{ animationDelay: '1600ms' }}>
                       <h3 className="font-heading text-xl font-light tracking-tight text-foreground">Anspruch</h3>
                       <p>
                         Höchste Qualität in der Beratung, absolute Diskretion und ein Gespür für 
@@ -580,9 +629,29 @@ export default function Home() {
                       location: "World Cargo Center, Leipzig"
                     },
                     {
+                      src: "/images/Edekavermietung bierwagen immobilien.png",
+                      title: "Vermietung",
+                      location: "EDEKA Center Peltzer, Dresden"
+                    },
+                    {
                       src: "/images/Verkauf FMZ Center Dresden.JPG",
                       title: "Grundstücksvermittlung",
                       location: "EDEKA Fachmarktzentrum, Dresden"
+                    },
+                    {
+                      src: "/images/Vermietung Sachsenpark, Leipzig.jpg",
+                      title: "Vermietung",
+                      location: "Einkaufszentrum Sachsenpark, Leipzig"
+                    },
+                    {
+                      src: "/images/Komplexvermietung EKZ Scheunenhof Pirna.jpg",
+                      title: "Exklusivvermietung",
+                      location: "EKZ Scheunenhof Pirna"
+                    },
+                    {
+                      src: "/images/Vermietung; Meininger Hotel, Dresden.jpg",
+                      title: "Vermietung",
+                      location: "Meininger Hotel, Dresden"
                     },
                     {
                       src: "/images/Verkauf, Wasapark, Dresden.jpg",
@@ -595,11 +664,6 @@ export default function Home() {
                       location: "Biomarkt Dresden"
                     },
                     {
-                      src: "/images/Vermietung Biomarkt Leipzig.jpg",
-                      title: "Vermietung",
-                      location: "Einkaufszentrum Sachsenpark, Leipzig"
-                    },
-                    {
                       src: "/images/Vermietung Gebäudeensemble Könneritzstraße 25, Dresden.jpg",
                       title: "Vermietung",
                       location: "Gebäudeensemble Könneritzstraße, Dresden"
@@ -608,11 +672,6 @@ export default function Home() {
                       src: "/images/Vermietung Pragerstraße 7 Dresden.jpg",
                       title: "Vermietung",
                       location: "Dresden"
-                    },
-                    {
-                      src: "/images/Vermietung Sachsenpark, Leipzig.jpg",
-                      title: "Vermietung",
-                      location: "Einkaufszentrum Sachsenpark, Leipzig"
                     },
                     {
                       src: "/images/Vermietung Studenten Apartmenthaus, Univiertel Dresden Uhlandstr.39.JPG",
@@ -635,11 +694,6 @@ export default function Home() {
                       location: "Kornmarkthaus, Bautzen"
                     },
                     {
-                      src: "/images/Vermietung; Meininger Hotel, Dresden.jpg",
-                      title: "Vermietung",
-                      location: "Meininger Hotel, Dresden"
-                    },
-                    {
                       src: "/images/Investment Wohnanlage Dresden Seidnitz, DobritzerWinterberg Str.,.JPG",
                       title: "Investment",
                       location: "Wohnanlage, Dresden-Seidnitz"
@@ -648,11 +702,6 @@ export default function Home() {
                       src: "/images/Investment penny Markt, Dürer Str. 119, Dresden Johannstadt.jpg",
                       title: "Investment",
                       location: "Penny Markt, Dresden"
-                    },
-                    {
-                      src: "/images/Komplexvermietung EKZ Scheunenhof Pirna.jpg",
-                      title: "Exklusivvermietung",
-                      location: "EKZ Scheunenhof Pirna"
                     },
                     {
                       src: "/images/Vermietung, BB Bank, Dresden.jpg",
@@ -671,12 +720,12 @@ export default function Home() {
                         alt={image.title}
                         width={400}
                         height={300}
-                        className="absolute inset-0 h-full w-full object-cover"
+                        className="absolute inset-0 h-full w-full object-cover brightness-110"
                       />
-                      <div className="absolute inset-0 bg-white/30">
+                      <div className="absolute inset-0 bg-white/15">
                         <div className="flex h-full flex-col justify-end bg-gradient-to-t from-black/50 to-transparent p-6">
-                          <h3 className="font-heading text-xl font-light">{image.title}</h3>
-                          <p className="text-sm text-muted-foreground">{image.location}</p>
+                          <h3 className="font-heading text-xl font-light text-white drop-shadow-md">{image.title}</h3>
+                          <p className="text-sm text-white drop-shadow-md">{image.location}</p>
                         </div>
                       </div>
                     </div>
@@ -689,9 +738,29 @@ export default function Home() {
                       location: "World Cargo Center, Leipzig"
                     },
                     {
+                      src: "/images/Edekavermietung bierwagen immobilien.png",
+                      title: "Vermietung",
+                      location: "EDEKA Center Peltzer, Dresden"
+                    },
+                    {
                       src: "/images/Verkauf FMZ Center Dresden.JPG",
                       title: "Grundstücksvermittlung",
                       location: "EDEKA Fachmarktzentrum, Dresden"
+                    },
+                    {
+                      src: "/images/Vermietung Sachsenpark, Leipzig.jpg",
+                      title: "Vermietung",
+                      location: "Einkaufszentrum Sachsenpark, Leipzig"
+                    },
+                    {
+                      src: "/images/Komplexvermietung EKZ Scheunenhof Pirna.jpg",
+                      title: "Komplexvermietung",
+                      location: "EKZ Scheunenhof, Pirna"
+                    },
+                    {
+                      src: "/images/Vermietung; Meininger Hotel, Dresden.jpg",
+                      title: "Vermietung",
+                      location: "Meininger Hotel, Dresden"
                     },
                     {
                       src: "/images/Verkauf, Wasapark, Dresden.jpg",
@@ -704,11 +773,6 @@ export default function Home() {
                       location: "Biomarkt, Dresden"
                     },
                     {
-                      src: "/images/Vermietung Biomarkt Leipzig.jpg",
-                      title: "Vermietung",
-                      location: "Einkaufszentrum Sachsenpark, Leipzig"
-                    },
-                    {
                       src: "/images/Vermietung Gebäudeensemble Könneritzstraße 25, Dresden.jpg",
                       title: "Vermietung",
                       location: "Gebäudeensemble Könneritzstraße, Dresden"
@@ -717,11 +781,6 @@ export default function Home() {
                       src: "/images/Vermietung Pragerstraße 7 Dresden.jpg",
                       title: "Vermietung",
                       location: "Dresden"
-                    },
-                    {
-                      src: "/images/Vermietung Sachsenpark, Leipzig.jpg",
-                      title: "Vermietung",
-                      location: "Einkaufszentrum Sachsenpark, Leipzig"
                     },
                     {
                       src: "/images/Vermietung Studenten Apartmenthaus, Univiertel Dresden Uhlandstr.39.JPG",
@@ -744,11 +803,6 @@ export default function Home() {
                       location: "Kornmarkthaus, Bautzen"
                     },
                     {
-                      src: "/images/Vermietung; Meininger Hotel, Dresden.jpg",
-                      title: "Vermietung",
-                      location: "Meininger Hotel, Dresden"
-                    },
-                    {
                       src: "/images/Investment Wohnanlage Dresden Seidnitz, DobritzerWinterberg Str.,.JPG",
                       title: "Investment",
                       location: "Wohnanlage, Dresden-Seidnitz"
@@ -757,11 +811,6 @@ export default function Home() {
                       src: "/images/Investment penny Markt, Dürer Str. 119, Dresden Johannstadt.jpg",
                       title: "Investment",
                       location: "Penny Markt, Dresden"
-                    },
-                    {
-                      src: "/images/Komplexvermietung EKZ Scheunenhof Pirna.jpg",
-                      title: "Komplexvermietung",
-                      location: "EKZ Scheunenhof, Pirna"
                     },
                     {
                       src: "/images/Vermietung, BB Bank, Dresden.jpg",
@@ -780,12 +829,12 @@ export default function Home() {
                         alt={image.title}
                         width={400}
                         height={300}
-                        className="absolute inset-0 h-full w-full object-cover"
+                        className="absolute inset-0 h-full w-full object-cover brightness-110"
                       />
-                      <div className="absolute inset-0 bg-white/30">
+                      <div className="absolute inset-0 bg-white/15">
                         <div className="flex h-full flex-col justify-end bg-gradient-to-t from-black/50 to-transparent p-6">
-                          <h3 className="font-heading text-xl font-light">{image.title}</h3>
-                          <p className="text-sm text-muted-foreground">{image.location}</p>
+                          <h3 className="font-heading text-xl font-light text-white drop-shadow-md">{image.title}</h3>
+                          <p className="text-sm text-white drop-shadow-md">{image.location}</p>
                         </div>
                       </div>
                     </div>
@@ -812,13 +861,13 @@ export default function Home() {
             {/* Editorial Header */}
             <div className="mb-24 grid grid-cols-1 gap-4 lg:grid-cols-[1fr_1fr] lg:gap-16">
               <div className="relative">
-                <span className="absolute -left-4 top-0 text-6xl font-extralight text-primary/20">06</span>
-                <h2 className="relative ml-12 font-heading text-6xl font-light tracking-tight sm:text-7xl">
+                <span className="absolute -left-4 top-0 text-6xl font-extralight text-primary/20 animate-fade-in opacity-0" style={{ animationDelay: '100ms' }}>06</span>
+                <h2 className="relative ml-12 font-heading text-6xl font-light tracking-tight sm:text-7xl animate-fade-in opacity-0" style={{ animationDelay: '300ms' }}>
                   Kontakt
                 </h2>
               </div>
               <div className="relative ml-8 lg:ml-0">
-                <p className="max-w-2xl text-lg font-light leading-relaxed text-muted-foreground">
+                <p className="max-w-2xl text-lg font-light leading-relaxed text-muted-foreground animate-fade-in opacity-0" style={{ animationDelay: '500ms' }}>
                   Ich freue mich darauf, Sie kennenzulernen und Ihre Immobilienanfragen persönlich zu besprechen. Kontaktieren Sie mich gerne direkt:
                 </p>
               </div>
@@ -832,7 +881,7 @@ export default function Home() {
               {/* Right Column */}
               <div className="relative">
                 <div className="grid gap-8 sm:grid-cols-2">
-                  <div className="space-y-4">
+                  <div className="space-y-4 animate-fade-in opacity-0" style={{ animationDelay: '700ms' }}>
                     <div className="flex items-center gap-4">
                       <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/5 text-primary">
                         <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -841,14 +890,14 @@ export default function Home() {
                       </div>
                       <div>
                         <h3 className="font-heading text-xl font-light tracking-tight">Telefon</h3>
-                        <Link href="tel:+49 (0)351 810 6880" className="text-lg font-light text-muted-foreground transition-colors hover:text-primary">
-                          +49 (0)351 810 6880
+                        <Link href="tel:+491723536789" className="text-lg font-light text-muted-foreground transition-colors hover:text-primary">
+                          +49 (0)172 35 36 789
                         </Link>
                       </div>
                     </div>
                   </div>
 
-                  <div className="space-y-4">
+                  <div className="space-y-4 animate-fade-in opacity-0" style={{ animationDelay: '900ms' }}>
                     <div className="flex items-center gap-4">
                       <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/5 text-primary">
                         <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -876,9 +925,9 @@ export default function Home() {
               {/* Company Info */}
               <div className="space-y-4 animate-fade-in opacity-0" style={{ animationDelay: '200ms' }}>
                 <h4 className="font-heading text-xl font-light tracking-tight">bierwagen immobilien</h4>
-                <div className="text-sm font-light leading-relaxed text-muted-foreground">
-                  <p>Uta Bierwagen</p>
-                  <p>Tel: +49 (0)351 810 6880</p>
+                <div className="space-y-1 text-sm text-muted-foreground">
+                  <p>Grenzstraße 18, 01640 Coswig</p>
+                  <p>Tel: +49 (0)172 35 36 789</p>
                   <p>E-Mail: u.bierwagen@bierwagen-immobilien.de</p>
                 </div>
               </div>
@@ -905,25 +954,14 @@ export default function Home() {
               {/* Legal */}
               <div className="space-y-4 animate-fade-in opacity-0" style={{ animationDelay: '600ms' }}>
                 <h4 className="font-heading text-xl font-light tracking-tight">Rechtliches</h4>
-                <ul className="space-y-2 text-sm font-light text-muted-foreground">
-                  <li>
-                    <Link href="/impressum" className="transition-colors hover:text-primary">Impressum</Link>
-                  </li>
-                  <li>
-                    <Link href="/datenschutz" className="transition-colors hover:text-primary">Datenschutz</Link>
-                  </li>
-                  <li>
+                <div className="border-t border-white/10 pt-6">
+                  <div className="flex flex-col space-y-2 text-sm text-muted-foreground">
                     <Link href="/agb" className="transition-colors hover:text-primary">AGB</Link>
-                  </li>
-                </ul>
+                    <Link href="/datenschutz" className="transition-colors hover:text-primary">Datenschutz</Link>
+                    <Link href="/impressum" className="transition-colors hover:text-primary">Impressum</Link>
+                  </div>
+                </div>
               </div>
-            </div>
-
-            {/* Copyright */}
-            <div className="mt-16 border-t border-primary/10 pt-8 text-center animate-fade-in opacity-0" style={{ animationDelay: '800ms' }}>
-              <p className="text-sm font-light text-muted-foreground">
-                &copy; {new Date().getFullYear()} bierwagen immobilien. Alle Rechte vorbehalten.
-              </p>
             </div>
           </div>
         </footer>

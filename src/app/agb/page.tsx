@@ -109,7 +109,7 @@ export default function AGBPage() {
         owner: "Inhaber Dipl.-Ing. oec. Uta Bierwagen",
         address: "Grenzstraße 18",
         city: "01640 Coswig bei Dresden",
-        phone: "Telefon: 0351/8106880, mobil: 0172/3536789",
+        phone: "Telefon: +49 (0)172 35 36 789",
         email: "E-Mail: u.bierwagen@bierwagen-immobilien.de"
       },
       contentAfterContact: `mittels einer eindeutigen Erklärung (z. B. Ein mit der Post

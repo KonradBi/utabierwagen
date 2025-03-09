@@ -23,7 +23,8 @@ export default function DatenschutzPage() {
                 <div className="space-y-2 text-muted-foreground">
                   <p>Frau Uta Bierwagen</p>
                   <p>bierwagen immobilien</p>
-                  <p>Telefon: 0351 8106880</p>
+                  <p>Grenzstraße 18, 01640 Coswig</p>
+                  <p>Telefon: +49 (0)172 35 36 789</p>
                   <p>E-Mail: u.bierwagen@bierwagen-immobilien.de</p>
                 </div>
               </section>

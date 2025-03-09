@@ -100,6 +100,40 @@
     flex: 0 0 auto;
   }
   
+  /* Floating animations for background elements */
+  @keyframes float-slow {
+    0% { transform: translateY(0) translateX(0); }
+    25% { transform: translateY(-10px) translateX(10px); }
+    50% { transform: translateY(0) translateX(20px); }
+    75% { transform: translateY(10px) translateX(10px); }
+    100% { transform: translateY(0) translateX(0); }
+  }
+  
+  @keyframes float-medium {
+    0% { transform: translateY(0) translateX(0); }
+    33% { transform: translateY(15px) translateX(-15px); }
+    66% { transform: translateY(-15px) translateX(-7px); }
+    100% { transform: translateY(0) translateX(0); }
+  }
+  
+  @keyframes float-fast {
+    0% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-20px) translateX(20px); }
+    100% { transform: translateY(0) translateX(0); }
+  }
+  
+  .animate-float-slow {
+    animation: float-slow 20s ease-in-out infinite;
+  }
+  
+  .animate-float-medium {
+    animation: float-medium 15s ease-in-out infinite;
+  }
+  
+  .animate-float-fast {
+    animation: float-fast 12s ease-in-out infinite;
+  }
+  
   /* Hexagon clip path for sector nodes */
   .clip-hexagon {
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
